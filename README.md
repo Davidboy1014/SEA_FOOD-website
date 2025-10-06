@@ -23,29 +23,40 @@ A full-stack web application for a Southeast Asian restaurant featuring an onlin
 
 ```
 SEA_FOOD-website/
-├── src/
-│   ├── frontend/final_app/          # React frontend application
-│   │   ├── src/
-│   │   │   ├── components/          # React components
-│   │   │   │   ├── App.jsx          # Main application component
-│   │   │   │   ├── EntreeMenu.jsx   # Entrees menu component
-│   │   │   │   ├── DrinksMenu.jsx   # Drinks menu component
-│   │   │   │   ├── DessertsMenu.jsx # Desserts menu component
-│   │   │   │   ├── ViewCart.jsx     # Shopping cart component
-│   │   │   │   ├── PaymentInfo.jsx  # Payment form component
-│   │   │   │   ├── OrderSummary.jsx # Order confirmation component
-│   │   │   │   ├── Contact.jsx      # Contact form component
-│   │   │   │   └── About_Us.jsx     # About page component
-│   │   │   ├── assets/              # SVG icons and images
-│   │   │   └── styles/              # CSS files
-│   │   ├── package.json             # Frontend dependencies
-│   │   └── vite.config.js           # Vite configuration
-│   └── backend/                     # Node.js backend server
-│       ├── server.js                # Express server and API routes
-│       ├── assets/
-│       │   └── data.json            # Sample menu data
-│       ├── insert*.js               # Data seeding scripts
-│       └── package.json             # Backend dependencies
+├── backend/                         # Node.js backend server
+│   ├── server.js                    # Express server and API routes
+│   ├── assets/
+│   │   └── data.json               # Sample menu data
+│   ├── insert*.js                  # Data seeding scripts
+│   ├── env.example                 # Environment variables template
+│   ├── .gitignore                  # Backend gitignore
+│   └── package.json                # Backend dependencies
+├── frontend/                        # React frontend application
+│   ├── src/
+│   │   ├── components/             # React components
+│   │   │   ├── App.jsx             # Main application component
+│   │   │   ├── EntreeMenu.jsx      # Entrees menu component
+│   │   │   ├── DrinksMenu.jsx      # Drinks menu component
+│   │   │   ├── DessertsMenu.jsx    # Desserts menu component
+│   │   │   ├── ViewCart.jsx        # Shopping cart component
+│   │   │   ├── PaymentInfo.jsx     # Payment form component
+│   │   │   ├── OrderSummary.jsx    # Order confirmation component
+│   │   │   ├── Contact.jsx         # Contact form component
+│   │   │   └── About_Us.jsx        # About page component
+│   │   ├── assets/                 # SVG icons and images
+│   │   ├── images/                 # Team photos and images
+│   │   └── styles/                 # CSS files
+│   ├── public/                     # Static assets
+│   ├── package.json                # Frontend dependencies
+│   ├── vite.config.js              # Vite configuration
+│   ├── tailwind.config.js          # Tailwind CSS configuration
+│   ├── eslint.config.js            # ESLint configuration
+│   └── .gitignore                  # Frontend gitignore
+├── Documents/                       # Project documentation
+│   ├── Final project proposal.pdf  # Project proposal document
+│   └── IP14_MT_Proposal (4).pdf    # Additional proposal
+├── package.json                     # Root package.json with scripts
+├── .gitignore                       # Root gitignore
 └── README.md                        # Project documentation
 ```
 
@@ -64,40 +75,65 @@ SEA_FOOD-website/
    cd SEA_FOOD-website
    ```
 
-2. **Set up the backend**
+2. **Install all dependencies (recommended)**
    ```bash
-   cd src/backend
+   npm run install:all
+   ```
+   
+   **OR install manually:**
+   ```bash
+   # Install root dependencies
+   npm install
+   
+   # Install backend dependencies
+   cd backend
+   npm install
+   
+   # Install frontend dependencies
+   cd ../frontend
    npm install
    ```
 
-3. **Set up the frontend**
-   ```bash
-   cd ../frontend/final_app
-   npm install
-   ```
-
-4. **Environment Setup**
-   - Create a `.env` file in the backend directory:
+3. **Environment Setup**
+   - Copy the environment template:
+     ```bash
+     cp backend/env.example backend/.env
+     ```
+   - Edit `backend/.env` with your MongoDB connection string:
      ```env
      MONGODB_URI=your_mongodb_connection_string
      PORT=3000
+     NODE_ENV=development
      ```
 
 ### Running the Application
 
-1. **Start the backend server**
-   ```bash
-   cd src/backend
-   npm start
-   ```
-   The API will be available at `http://localhost:3000`
+**Option 1: Run both frontend and backend together**
+```bash
+npm start
+```
 
-2. **Start the frontend development server**
-   ```bash
-   cd src/frontend/final_app
-   npm run dev
-   ```
-   The application will be available at `http://localhost:5173`
+**Option 2: Run separately**
+```bash
+# Terminal 1 - Start the backend server
+npm run start:backend
+# API available at http://localhost:3000
+
+# Terminal 2 - Start the frontend development server  
+npm run start:frontend
+# Application available at http://localhost:5173
+```
+
+**Option 3: Manual startup**
+```bash
+# Backend
+cd backend
+npm start
+
+# Frontend (in new terminal)
+cd frontend
+npm run dev
+```
 
 ## 📡 API Endpoints
 

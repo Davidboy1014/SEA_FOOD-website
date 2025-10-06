@@ -1,0 +1,38 @@
+{
+  "name": "sea-food-restaurant",
+  "version": "1.0.0",
+  "description": "Full-stack restaurant ordering system featuring Southeast Asian cuisine with React frontend and Node.js backend",
+  "main": "backend/server.js",
+  "scripts": {
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm run dev",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "dev": "npm run start",
+    "build": "cd frontend && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/sea-food-restaurant.git"
+  },
+  "keywords": [
+    "restaurant",
+    "food-ordering",
+    "southeast-asian-cuisine",
+    "react",
+    "nodejs",
+    "mongodb",
+    "express",
+    "fullstack"
+  ],
+  "author": "Trung Ly & David Cavan",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
